@@ -1,5 +1,5 @@
 #!/bin/bash
-. ../config/settings.ini
+. ./config/settings.ini
 echo "PGPASSWORD=$user_pg_pass psql -h $pg_host -d $pg_dbname -U $user_pg -p $pg_port"
 dburi='postgres'
 echo "db name is $pg_dbname"

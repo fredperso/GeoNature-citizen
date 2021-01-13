@@ -175,9 +175,9 @@ if [ $server_side = "true" ]; then
   echo "Build server side project"
   npm run build:i18n-ssr
 #  Installation de la conf
-  sudo cp ../gncitizen_frontssr-service.conf /etc/supervisor/conf.d/
+  sudo cp $DIR/install/confs/supervisor/gncitizen_frontssr-service.conf /etc/supervisor/conf.d/
   sudo sed -i "s%APP_PATH%${DIR}%" /etc/supervisor/conf.d/gncitizen_frontssr-service.conf
-  sudo cp config/apache/gncitizen_frontssr.conf /etc/apache2/sites-available/gncitizen.conf
+  sudo cp $DIR/install/confs/apache/gncitizen_frontssr.conf /etc/apache2/sites-available/gncitizen.conf
   sudo sed -i "s/APP_PATH/${DIR}/g" /etc/apache2/sites-available/gncitizen.conf
   sudo sed -i "s/mydomain.net/$URL/g" /etc/apache2/sites-available/gncitizen.conf
   
@@ -204,7 +204,7 @@ deactivate
 touch init_done
 
 #Création de la conf supervisor
-sudo cp gncitizen_api-service.conf /etc/supervisor/conf.d/
+sudo cp $DIR/install/confs/supervisor/gncitizen_api-service.conf /etc/supervisor/conf.d/
 sudo sed -i "s%APP_PATH%${DIR}%" /etc/supervisor/conf.d/gncitizen_api-service.conf
 
 # cp  config/apache/gncitizen_api.conf  /etc/apache2/sites-available/gncitizen_api.conf 
